@@ -1,5 +1,10 @@
 import java.util.Scanner;
 public class Main {
+    private static void exibeArrayInt (int [] arr){
+        for (int i = 0; i< arr.length; i++){
+            System.out.println(arr[i]);
+        }
+    }
     private static double [] registrarTemp (Scanner sc){
         double [] temperatura = new double [12];
         for (int i = 0; i < temperatura.length; i++){
@@ -7,16 +12,6 @@ public class Main {
             temperatura[i]=sc.nextDouble();
         }
         return temperatura;
-    }
-    private static void exibeArrayDouble (double [] arr){
-        for (int i = 0; i< arr.length; i++){
-            System.out.println(arr[i]);
-        }
-    }
-    private static void exibeArrayInt (int [] arr){
-        for (int i = 0; i< arr.length; i++){
-            System.out.println(arr[i]);
-        }
     }
     private static int [] posicaoDoMaiorEMenor (double [] arr){
         int [] posicaoDosMeses = new int [2];
@@ -34,35 +29,17 @@ public class Main {
         }
         return posicaoDosMeses;
     }
-    private static void maiorEMenorTemperatura (int [] arr){
-        switch (arr[0]){
-            case 0:
-                System.out.println("Janeiro");
-            case 1:
-                System.out.println("Fevereiro");
-            case 2:
-                System.out.println("Marco");
-            case 3:
-                System.out.println("Abril");
-            case 4:
-                System.out.println("Maio");
-            case 5:
-                System.out.println("Junho");
-            case 6:
-                System.out.println("Julho");
-            case 7:
-                System.out.println("Agosto");
-            case 8:
-                System.out.println("Setembro");
-            case 9:
-                System.out.println("Outubro");
-            case 10:
-                System.out.println("Novembro");
-            case 11:
-                System.out.println("Dezembro");
-        }
 
-
+    private static void maiorEMenorTemperatura (int [] indexDosMeses, double [] registroDosMeses){
+        String [] meses = {
+                "Janeiro", "Fevereiro", "Marco", "Abril",
+                "Maio", "Junho", "Julho", "Agosto",
+                "Setembro", "Outubro", "Novembro", "Dezembro"
+        };
+        System.out.println("Mes com maior temp.: "+meses[indexDosMeses[0]]);
+        System.out.println("Com a temperatura de: " + registroDosMeses[indexDosMeses[0]]);
+        System.out.println("Mes com menor temp.: "+meses[indexDosMeses[1]]);
+        System.out.println("Com a temperatura de: " + registroDosMeses[indexDosMeses[1]]);
     }
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
@@ -70,10 +47,7 @@ public class Main {
         double[] registro = registrarTemp(sc);
         int [] posicao = posicaoDoMaiorEMenor(registro);
         exibeArrayInt(posicao);
-        maiorEMenorTemperatura(posicao);
-
-
-
+        maiorEMenorTemperatura(posicao, registro);
 
     }
 }
