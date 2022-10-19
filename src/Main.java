@@ -18,31 +18,61 @@ public class Main {
             System.out.println(arr[i]);
         }
     }
-    private static int [][] maiorMenorEPosicoes (double [] arr){
-        int [][] posicaoDosMesesETemperatura = new int [2];
+    private static int [] posicaoDoMaiorEMenor (double [] arr){
+        int [] posicaoDosMeses = new int [2];
         double maiorTemperatura = arr[0];
         double menorTemperatura = arr[0];
         for (int i = 0; i< arr.length; i++){
             if (arr[i]>maiorTemperatura){
-                maiorEMenorTemperaturas[0] = arr[i];
                 posicaoDosMeses[0] = i;
             }
         }
-
-        for (int j = 1; j< arr.length; j++){
+        for (int j = 0; j< arr.length; j++){
             if (arr[j]<menorTemperatura){
-                maiorEMenorTemperaturas[1] = arr[j];
                 posicaoDosMeses[1] = j;
             }
         }
         return posicaoDosMeses;
     }
+    private static void maiorEMenorTemperatura (int [] arr){
+        switch (arr[0]){
+            case 0:
+                System.out.println("Janeiro");
+            case 1:
+                System.out.println("Fevereiro");
+            case 2:
+                System.out.println("Marco");
+            case 3:
+                System.out.println("Abril");
+            case 4:
+                System.out.println("Maio");
+            case 5:
+                System.out.println("Junho");
+            case 6:
+                System.out.println("Julho");
+            case 7:
+                System.out.println("Agosto");
+            case 8:
+                System.out.println("Setembro");
+            case 9:
+                System.out.println("Outubro");
+            case 10:
+                System.out.println("Novembro");
+            case 11:
+                System.out.println("Dezembro");
+        }
+
+
+    }
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
-        double [] listaTemp= registrarTemp(sc);
-        exibeArrayDouble(listaTemp);
-        int[] x = maiorEMenor(listaTemp);
-        exibeArrayInt(x);
+
+        double[] registro = registrarTemp(sc);
+        int [] posicao = posicaoDoMaiorEMenor(registro);
+        exibeArrayInt(posicao);
+        maiorEMenorTemperatura(posicao);
+
+
 
 
     }
