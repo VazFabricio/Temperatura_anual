@@ -8,7 +8,7 @@ public class Main {
     private static double [] registrarTemp (Scanner sc){
         double [] temperatura = new double [12];
         for (int i = 0; i < temperatura.length; i++){
-            System.out.println("Temperatura do "+(i+1)+"º mes do ano");
+            System.out.print("Temperatura do "+(i+1)+"º mes do ano");
             temperatura[i]=sc.nextDouble();
         }
         return temperatura;
@@ -17,20 +17,21 @@ public class Main {
         int [] posicaoDosMeses = new int [2];
         double maiorTemperatura = arr[0];
         double menorTemperatura = arr[0];
+        int posicaoDoMaior = 0;
+        int posicaoDoMenor = 0;
         for (int i = 0; i< arr.length; i++){
             if (arr[i]>maiorTemperatura){
+                maiorTemperatura = arr[i];
                 posicaoDosMeses[0] = i;
-            }
-        }
-        for (int j = 0; j< arr.length; j++){
-            if (arr[j]<menorTemperatura){
-                posicaoDosMeses[1] = j;
+            }else if (arr[i]<menorTemperatura){
+                menorTemperatura = arr[i];
+                posicaoDosMeses[1] = i;
             }
         }
         return posicaoDosMeses;
     }
 
-    private static void maiorEMenorTemperatura (int [] indexDosMeses, double [] registroDosMeses){
+    private static void exibeNomeDosMeses (int [] indexDosMeses, double [] registroDosMeses){
         String [] meses = {
                 "Janeiro", "Fevereiro", "Marco", "Abril",
                 "Maio", "Junho", "Julho", "Agosto",
@@ -47,7 +48,7 @@ public class Main {
         double[] registro = registrarTemp(sc);
         int [] posicao = posicaoDoMaiorEMenor(registro);
         exibeArrayInt(posicao);
-        maiorEMenorTemperatura(posicao, registro);
+        exibeNomeDosMeses(posicao, registro);
 
     }
 }
